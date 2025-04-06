@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Jorge Eduardo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Exo 2', sans-serif;
+        }
+        body {
+            background-color: #212529;
+            color: #e9ecef;
+            transition: all 0.3s ease;
+        }
+        body.light {
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        header {
+            background-color: #343a40;
+            color: #e9ecef;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+        body.light header {
+            background-color: #adb5bd;
+            color: #212529;
+        }
+        header h1 {
+            font-size: 2.5em;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .theme-toggle input {
+            display: none;
+        }
+        .theme-toggle label {
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #c3e935;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #c3e935;
+        }
+        body.light h2 {
+            color: #343a40;
+        }
+        .skills ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .skills li {
+            background-color: #c3e935;
+            color: #212529;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        body.light .skills li {
+            background-color: #c3e935;
+            color: #212529;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background-color: #343a40;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        body.light .project-card {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-card h3 {
+            padding: 15px;
+            font-size: 1.2em;
+            color: #c3e935;
+        }
+        body.light .project-card h3 {
+            color: #343a40;
+        }
+        .project-card p {
+            padding: 0 15px 15px;
+            color: #adb5bd;
+        }
+        body.light .project-card p {
+            color: #666;
+        }
+        .project-card a {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: #c3e935;
+            color: #212529;
+            text-decoration: none;
+            border-radius: 0 0 10px 10px;
+        }
+        body.light .project-card a {
+            background-color: #c3e935;
+            color: #212529;
+        }
+        .courses ul {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .courses li {
+            background-color: #343a40;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        body.light .courses li {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #343a40;
+            color: #e9ecef;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        body.light footer {
+            background-color: #adb5bd;
+            color: #212529;
+        }
+        footer a {
+            color: #c3e935;
+            text-decoration: none;
+        }
+        body.light footer a {
+            color: #c3e935;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="theme-toggle">
+            <input type="checkbox" id="theme-switch">
+            <label for="theme-switch" id="theme-icon">🌙</label>
+        </div>
+        <h1>Jorge Eduardo</h1>
+        <p>Estudiante de Ingeniería en Sistemas Computacionales y servidor público con más de 20 años de experiencia</p>
+        <p>Apasionado por la programación y la tecnología, disfruto aprender y desarrollar proyectos con herramientas modernas.</p>
+    </header>
+
+    <section class="skills">
+        <h2>Habilidades</h2>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>Visual Studio Code</li>
+            <li>Jupyter-Lab</li>
+        </ul>
+    </section>
+
+    <section class="gallery">
+        <h2>Galería de Proyectos</h2>
+        <div class="project-card">
+            <img src="https://assets.grok.com/users/01d83165-8aad-40e0-bdb0-faf467768bcc/generated/1vOCptLKyuyTGFH3/image.jpg" alt="ToDo List">
+            <h3>ToDo List</h3>
+            <p>ToDo List es una aplicación web para gestionar tareas diarias. Permite agregar, completar y eliminar tareas de forma sencilla, con un diseño responsivo y un toggle de tema oscuro/claro para una mejor experiencia de usuario. Desarrollada con HTML, CSS y JavaScript.</p>
+            <a href="https://github.com/Masio84/ToDoList">Ver en GitHub</a>
+        </div>
+        <div class="project-card">
+            <img src="BarberiaAlura.png" alt="Barberia Alura">
+            <h3>Barbería Alura</h3>
+            <p>Barbería Alura es un sitio web estático creado para una barbería ficticia como parte de los cursos de HTML5 y CSS3 de Alura Latam. Incluye páginas como la de inicio, productos y contacto, con un diseño responsivo y estilos modernos. Utiliza HTML5 para la estructura y CSS3 para el diseño, incorporando elementos como navegación, formularios y media queries para adaptarse a diferentes dispositivos.</p>
+            <a href="https://github.com/Masio84/Barberia_Alura">Ver en GitHub</a>
+        </div>
+    </section>
+
+    <section class="courses">
+        <h2>Cursos Realizados</h2>
+        <ul>
+            <li>HTML5 y CSS3, parte 1: Mi primera página web (Alura)</li>
+            <li>HTML5 y CSS3, parte 2: Posicionamiento, listas y navegación (Alura)</li>
+            <li>HTML5 y CSS3, parte 3: Trabajando con formularios y tablas (Alura)</li>
+            <li>HTML5 y CSS3, parte 4: Avanzando en CSS (Alura)</li>
+            <li>JavaScript: Programación Orientada a Objetos (Alura)</li>
+            <li>Python: Introducción a la programación (Alura)</li>
+            <li>Formación en tecnología con Python (Alura)</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Contacto: 
+            <a href="https://github.com/Masio84">GitHub</a> | 
+            <a href="https://www.linkedin.com/in/jorgeecp">LinkedIn</a>
+        </p>
+    </footer>
+
+    <script>
+        const themeSwitch = document.getElementById('theme-switch');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Cargar el tema guardado (si existe)
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light');
+            themeIcon.textContent = '🌙';
+        } else {
+            themeIcon.textContent = '☀️';
+        }
+
+        themeSwitch.addEventListener('change', () => {
+            document.body.classList.toggle('light');
+            if (document.body.classList.contains('light')) {
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
