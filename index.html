@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content Hegel="width=device-width, initial-scale=1.0">
     <title>Portafolio de Jorge Eduardo</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -21,12 +21,25 @@
             background-color: #f8f9fa;
             color: #212529;
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         header {
             background-color: #343a40;
             color: #e9ecef;
             text-align: center;
             padding: 50px 20px;
             position: relative;
+            animation: fadeIn 0.8s ease-out forwards;
         }
         body.light header {
             background-color: #adb5bd;
@@ -67,6 +80,10 @@
         body.light h2 {
             color: #343a40;
         }
+        .skills {
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
         .skills ul {
             list-style: none;
             display: flex;
@@ -85,6 +102,8 @@
             color: #212529;
         }
         .gallery {
+            animation: fadeIn 0.8s ease-out 0.4s forwards;
+            opacity: 0;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
@@ -136,6 +155,10 @@
             background-color: #c3e935;
             color: #212529;
         }
+        .courses {
+            animation: fadeIn 0.8s ease-out 0.6s forwards;
+            opacity: 0;
+        }
         .courses ul {
             list-style: none;
             max-width: 800px;
@@ -152,12 +175,49 @@
             background-color: white;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
+        .contact {
+            animation: fadeIn 0.8s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact input, .contact textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #adb5bd;
+            background-color: #343a40;
+            color: #e9ecef;
+        }
+        body.light .contact input, body.light .contact textarea {
+            background-color: #f8f9fa;
+            color: #212529;
+            border: 1px solid #666;
+        }
+        .contact button {
+            padding: 10px;
+            background-color: #c3e935;
+            color: #212529;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact button:hover {
+            background-color: #a8c930;
+        }
         footer {
             background-color: #343a40;
             color: #e9ecef;
             text-align: center;
             padding: 20px;
             margin-top: 20px;
+            animation: fadeIn 0.8s ease-out 1s forwards;
+            opacity: 0;
         }
         body.light footer {
             background-color: #adb5bd;
@@ -169,6 +229,73 @@
         }
         body.light footer a {
             color: #c3e935;
+        }
+
+        /* Botón Volver arriba */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #c3e935;
+            color: #212529;
+            padding: 10px 15px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #back-to-top.show {
+            opacity: 1;
+        }
+
+        /* Ajustes para pantallas pequeñas */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 15px;
+            }
+            section {
+                padding: 30px 15px;
+            }
+            .skills ul {
+                gap: 15px;
+            }
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .project-card img {
+                height: 150px;
+            }
+            .courses ul {
+                padding: 0 10px;
+            }
+            .contact form {
+                padding: 0 10px;
+            }
+            footer {
+                padding: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .skills li {
+                padding: 8px 15px;
+            }
+            .project-card h3 {
+                font-size: 1em;
+            }
+            .project-card p {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -224,6 +351,18 @@
         </ul>
     </section>
 
+    <section class="contact">
+        <h2>Contacto</h2>
+        <form action="https://formsubmit.co/masio.tds@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Tu correo" required>
+            <textarea name="message" placeholder="Tu mensaje" rows="5" required></textarea>
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde tu portafolio">
+            <input type="hidden" name="_next" value="https://masio84.github.io/Masio84/#contact">
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
     <footer>
         <p>Contacto: 
             <a href="https://github.com/Masio84">GitHub</a> | 
@@ -231,11 +370,14 @@
         </p>
     </footer>
 
+    <button id="back-to-top" title="Volver arriba">↑</button>
+
     <script>
         const themeSwitch = document.getElementById('theme-switch');
         const themeIcon = document.getElementById('theme-icon');
+        const backToTopButton = document.getElementById('back-to-top');
 
-        // Cargar el tema guardado (si existe)
+        // Cargar el tema guardado
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add('light');
             themeIcon.textContent = '🌙';
@@ -252,6 +394,20 @@
                 themeIcon.textContent = '☀️';
                 localStorage.setItem('theme', 'dark');
             }
+        });
+
+        // Mostrar/Ocultar botón "Volver arriba"
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        // Volver arriba al hacer clic
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
