@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content Hegel="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio de Jorge Eduardo</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -47,6 +47,10 @@
         }
         header h1 {
             font-size: 2.5em;
+        }
+        header h2 {
+            font-size: 1.8em;
+            margin-top: 10px;
         }
         header p {
             font-size: 1.2em;
@@ -231,7 +235,6 @@
             color: #c3e935;
         }
 
-        /* Botón Volver arriba */
         #back-to-top {
             position: fixed;
             bottom: 20px;
@@ -249,7 +252,6 @@
             opacity: 1;
         }
 
-        /* Ajustes para pantallas pequeñas */
         @media (max-width: 768px) {
             header {
                 padding: 30px 15px;
@@ -281,6 +283,9 @@
             header h1 {
                 font-size: 2em;
             }
+            header h2 {
+                font-size: 1.5em;
+            }
             header p {
                 font-size: 1em;
             }
@@ -307,7 +312,8 @@
         </div>
         <h1>Masio Technologies & Digital Solutions</h1>
         <h2>Jorge Eduardo Cuellar Piedra</h2>
-        <p>Funcionario público en el ISSEA con más de 20 años de experiencia y estudiante de Ingeniería en Sistemas, apasionado por JavaScript, HTML5 y CSS3.</p>
+        <p>Funcionario público en el Instituto de Servicios de Salud del Estado de Aguascalientes (ISSEA), donde brindo soporte administrativo con más de 20 años de experiencia.</p>
+        <p>Estudiante de Ingeniería en Sistemas Computacionales, apasionado por el desarrollo web y tecnologías modernas como JavaScript, HTML5 y CSS3.</p>
     </header>
 
     <section class="skills">
@@ -335,6 +341,12 @@
             <h3>Barbería Alura</h3>
             <p>Barbería Alura es un sitio web estático creado para una barbería ficticia como parte de los cursos de HTML5 y CSS3 de Alura Latam. Incluye páginas como la de inicio, productos y contacto, con un diseño responsivo y estilos modernos. Utiliza HTML5 para la estructura y CSS3 para el diseño, incorporando elementos como navegación, formularios y media queries para adaptarse a diferentes dispositivos.</p>
             <a href="https://github.com/Masio84/Barberia_Alura">Ver en GitHub</a>
+        </div>
+        <div class="project-card">
+            <img src="https://via.placeholder.com/300x200" alt="Queremos Gorditas">
+            <h3>Queremos Gorditas</h3>
+            <p>Queremos Gorditas es un sitio web estático desarrollado para un restaurante ficticio de gorditas, creado como parte de un curso de Alura Latam. Presenta una página principal con un diseño sencillo y funcional, utilizando HTML5 para la estructura y CSS3 para estilos básicos. Ideal para practicar fundamentos de desarrollo web.</p>
+            <a href="https://github.com/Masio84/QueremosGorditas">Ver en GitHub</a>
         </div>
     </section>
 
@@ -377,7 +389,6 @@
         const themeIcon = document.getElementById('theme-icon');
         const backToTopButton = document.getElementById('back-to-top');
 
-        // Cargar el tema guardado
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add('light');
             themeIcon.textContent = '🌙';
@@ -396,7 +407,6 @@
             }
         });
 
-        // Mostrar/Ocultar botón "Volver arriba"
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopButton.classList.add('show');
@@ -405,7 +415,6 @@
             }
         });
 
-        // Volver arriba al hacer clic
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
