@@ -664,16 +664,6 @@
                 min-width: 100%;
             }
         }
-
-        /* Animations for lazy loaded images */
-        img[loading="lazy"] {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        img[loading="lazy"].loaded {
-            opacity: 1;
-        }
     </style>
 </head>
 <body>
@@ -729,10 +719,9 @@
     <section class="gallery">
         <h2>Proyectos Destacados</h2>
         <div class="projects-grid">
-            <!-- Proyecto existente: ToDo List -->
             <div class="project-card">
                 <div class="project-image">
-                    <img src="https://raw.githubusercontent.com/Masio84/Masio84/refs/heads/main/ToDoList.jpg" alt="ToDo List" loading="lazy">
+                    <img src="ToDoList.jpg" alt="ToDo List">
                 </div>
                 <div class="project-info">
                     <h3>ToDo List App</h3>
@@ -752,11 +741,10 @@
                     </div>
                 </div>
             </div>
-    
-            <!-- Nuevo Proyecto: Número Secreto -->
+
             <div class="project-card">
                 <div class="project-image">
-                    <img src="https://raw.githubusercontent.com/Masio84/Masio84/refs/heads/main/numero-secreto.png" alt="Número Secreto" loading="lazy">
+                    <img src="numero-secreto.png" alt="Número Secreto">
                 </div>
                 <div class="project-info">
                     <h3>Número Secreto</h3>
@@ -775,11 +763,10 @@
                     </div>
                 </div>
             </div>
-    
-            <!-- Nuevo Proyecto: Corazón CSS -->
+
             <div class="project-card">
                 <div class="project-image">
-                    <img src="https://raw.githubusercontent.com/Masio84/Masio84/refs/heads/main/corazon.png" alt="Corazón CSS" loading="lazy">
+                    <img src="corazon.png" alt="Corazón CSS">
                 </div>
                 <div class="project-info">
                     <h3>Corazón Animado</h3>
@@ -799,11 +786,10 @@
                     </div>
                 </div>
             </div>
-    
-            <!-- Proyecto existente: Barbería Alura -->
+
             <div class="project-card">
                 <div class="project-image">
-                    <img src="https://raw.githubusercontent.com/Masio84/Masio84/refs/heads/main/BarberiaAlura.png" alt="Barberia Alura" loading="lazy">
+                    <img src="BarberiaAlura.png" alt="Barberia Alura">
                 </div>
                 <div class="project-info">
                     <h3>Barbería Alura</h3>
@@ -822,11 +808,10 @@
                     </div>
                 </div>
             </div>
-    
-            <!-- Proyecto existente: Queremos Gorditas -->
+
             <div class="project-card">
                 <div class="project-image">
-                    <img src="https://raw.githubusercontent.com/Masio84/Masio84/refs/heads/main/QueremosGorditasLogo.png" alt="Queremos Gorditas" loading="lazy">
+                    <img src="QueremosGorditasLogo.png" alt="Queremos Gorditas">
                 </div>
                 <div class="project-info">
                     <h3>Queremos Gorditas</h3>
@@ -960,50 +945,13 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Lazy Loading Images
-        document.addEventListener('DOMContentLoaded', function() {
-            const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
-            
-            if ('IntersectionObserver' in window) {
-                const lazyImageObserver = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            const lazyImage = entry.target;
-                            // Ensure the image is loaded before showing
-                            lazyImage.onload = function() {
-                                lazyImage.classList.add('loaded');
-                            };
-                            // Handle potential loading errors
-                            lazyImage.onerror = function() {
-                                console.error('Error loading image:', lazyImage.alt);
-                            };
-                            lazyImageObserver.unobserve(lazyImage);
-                        }
-                    });
-                });
-
-                lazyImages.forEach(function(lazyImage) {
-                    lazyImageObserver.observe(lazyImage);
-                });
-            } else {
-                // Fallback for browsers without IntersectionObserver
-                lazyImages.forEach(function(lazyImage) {
-                    lazyImage.classList.add('loaded');
-                });
-            }
-        });
-
         // Contact Form Handling
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                // You can add form validation here
                 const submitButton = this.querySelector('button[type="submit"]');
                 submitButton.disabled = true;
                 submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                
-                // In a real scenario, you might want to use fetch() for AJAX submission
-                // For now, we'll let FormSubmit handle it
             });
         }
 
