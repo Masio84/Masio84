@@ -40,7 +40,7 @@
             color: var(--text-light);
             transition: var(--transition);
             line-height: 1.6;
-            overflow-x: hidden; /* Previene scroll horizontal */
+            overflow-x: hidden;
         }
 
         body.light {
@@ -102,7 +102,6 @@
             margin-bottom: 15px;
         }
 
-        /* Nuevo estilo para el toggle switch */
         .theme-toggle {
             position: absolute;
             top: 20px;
@@ -429,6 +428,93 @@
             font-size: 1.2em;
         }
 
+        /* Awards Section */
+        .awards {
+            animation: fadeIn 0.8s ease-out 0.7s forwards;
+            opacity: 0;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .award-card {
+            background-color: var(--dark-card);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 20px;
+        }
+
+        body.light .award-card {
+            background-color: var(--light-card);
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .award-icon {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .award-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .award-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .award-info p {
+            margin-bottom: 15px;
+            color: var(--text-gray);
+        }
+
+        body.light .award-info p {
+            color: #666;
+        }
+
+        .award-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .award-link {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+        }
+
+        .award-link:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
         /* Contact Section */
         .contact {
             animation: fadeIn 0.8s ease-out 0.8s forwards;
@@ -656,7 +742,8 @@
                 margin-bottom: 30px;
             }
             
-            .projects-grid {
+            .projects-grid,
+            .awards-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -862,7 +949,7 @@
                         <a href="https://github.com/Masio84/QueremosGorditas" target="_blank" class="github-link">
                             <i class="fab fa-github"></i> Código
                         </a>
-                        <a href="HTTPS://queremosgorditas.com" target="_blank" class="demo-link">
+                        <a href="queremosgorditas.com" target="_blank" class="demo-link">
                             <i class="fas fa-external-link-alt"></i> Demo
                         </a>
                     </div>
@@ -889,6 +976,42 @@
             <div class="course-item">
                 <strong>Formación en tecnología con Python</strong> - Alura Latam
             </div>
+        </div>
+    </section>
+
+    <section class="awards">
+        <h2>Reconocimientos Obtenidos</h2>
+        <div class="awards-grid">
+            <div class="award-card">
+                <i class="fas fa-certificate award-icon"></i>
+                <div class="award-info">
+                    <h3>Habilidades Gerenciales - Beginner I</h3>
+                    <p><strong>Utel Universidad</strong></p>
+                    <p>Reconocimiento por completar con éxito el curso de Habilidades Gerenciales (Beginner). La insignia acredita el primero de seis subniveles en el nivel Beginner.</p>
+                    <div class="award-links">
+                        <a href="https://badges.s4learning.com/earner/public/67c8bb77f4de68a429018c6c/badge" target="_blank" class="award-link">
+                            <i class="fas fa-certificate"></i> Ver Credencial
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Agrega más tarjetas de reconocimientos aquí si tienes más -->
+            <!-- Ejemplo de otra tarjeta (descomenta y ajusta si necesitas) -->
+            <!--
+            <div class="award-card">
+                <i class="fas fa-certificate award-icon"></i>
+                <div class="award-info">
+                    <h3>Otro Reconocimiento</h3>
+                    <p><strong>Institución</strong></p>
+                    <p>Descripción breve del reconocimiento obtenido.</p>
+                    <div class="award-links">
+                        <a href="URL_DEL_RECONOCIMIENTO" target="_blank" class="award-link">
+                            <i class="fas fa-certificate"></i> Ver Credencial
+                        </a>
+                    </div>
+                </div>
+            </div>
+            -->
         </div>
     </section>
 
