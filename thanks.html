@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracias | Jorge Eduardo Cuellar</title>
+    <meta name="description" content="Página de agradecimiento por contactar a Jorge Eduardo Cuellar">
+    <meta name="author" content="Jorge Eduardo Cuellar Piedra">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #c3e935;
+            --primary-dark: #a8c930;
+            --dark-bg: #212529;
+            --dark-header: #343a40;
+            --dark-card: #2c3034;
+            --light-bg: #f8f9fa;
+            --light-header: #adb5bd;
+            --light-card: #ffffff;
+            --text-dark: #212529;
+            --text-light: #e9ecef;
+            --text-gray: #adb5bd;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body.light {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(195, 233, 53, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(195, 233, 53, 0.8), 0 0 30px rgba(195, 233, 53, 0.4);
+            }
+            100% {
+                text-shadow: 0 0 5px rgba(195, 233, 53, 0.5);
+            }
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--dark-header);
+            color: var(--text-light);
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            animation: fadeIn 0.8s ease-out forwards;
+            box-shadow: var(--shadow);
+        }
+
+        body.light header {
+            background-color: var(--light-header);
+            color: var(--text-dark);
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        body.light header h2 {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            z-index: 10;
+        }
+
+        .theme-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .theme-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .theme-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .theme-slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .theme-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Main Content */
+        .thanks-section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .thanks-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            animation: textGlow 2s infinite ease-in-out;
+        }
+
+        body.light .thanks-section h2 {
+            color: var(--primary-color);
+        }
+
+        .thanks-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: var(--text-gray);
+        }
+
+        body.light .thanks-section p {
+            color: #666;
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: var(--transition);
+        }
+
+        .home-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-header);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            animation: fadeIn 0.8s ease-out 1s forwards;
+        }
+
+        body.light footer {
+            background-color: var(--light-header);
+            color: var(--text-dark);
+        }
+
+        footer p {
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: var(--text-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 50px 15px 30px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header h2 {
+                font-size: 1.5em;
+            }
+
+            .thanks-section {
+                padding: 40px 15px;
+            }
+
+            .thanks-section h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header h2 {
+                font-size: 1.3em;
+            }
+
+            .thanks-section h2 {
+                font-size: 1.5em;
+            }
+
+            .theme-toggle {
+                width: 40px;
+                height: 20px;
+                top: 15px;
+                left: 15px;
+            }
+
+            .theme-slider:before {
+                height: 14px;
+                width: 14px;
+            }
+
+            input:checked + .theme-slider:before {
+                transform: translateX(20px);
+            }
+        }
+    </style>
+</head>
+<body class="dark">
+    <header>
+        <div class="theme-toggle">
+            <input type="checkbox" id="theme-switch" checked>
+            <label for="theme-switch" class="theme-slider"></label>
+        </div>
+        <div class="header-content">
+            <h1>Jorge Eduardo Cuellar Piedra</h1>
+            <h2>Desarrollador Web & Funcionario Público</h2>
+        </div>
+    </header>
+
+    <section class="thanks-section">
+        <h2>¡Gracias por tu mensaje!</h2>
+        <p>Me pondré en contacto contigo lo antes posible. Mientras tanto, puedes explorar más sobre mis proyectos y habilidades.</p>
+        <a href="https://masio84.github.io/Masio84/index.html" class="home-button">
+            <i class="fas fa-home"></i> Volver al Inicio
+        </a>
+    </section>
+
+    <footer>
+        <p>
+            <a href="https://github.com/Masio84" target="_blank">GitHub</a> | 
+            <a href="https://www.linkedin.com/in/jorgeecp" target="_blank">LinkedIn</a> | 
+            <a href="mailto:masio.tds@gmail.com">Email</a>
+        </p>
+        <p class="copyright">© 2025 Jorge Eduardo Cuellar Piedra. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Configuración inicial - Modo oscuro por defecto
+        document.body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        
+        // Cargar tema guardado
+        const themeSwitch = document.getElementById('theme-switch');
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.replace('dark', 'light');
+            themeSwitch.checked = false;
+        }
+
+        // Controlador del toggle
+        themeSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.replace('light', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.replace('dark', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
