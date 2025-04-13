@@ -387,50 +387,9 @@
             transform: translateY(-2px);
         }
 
-        /* Courses Section */
-        .courses {
-            animation: fadeIn 0.8s ease-out 0.6s forwards;
-            opacity: 0;
-        }
-
-        .courses-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .course-item {
-            background-color: var(--dark-card);
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            padding-left: 50px;
-        }
-
-        body.light .course-item {
-            background-color: var(--light-card);
-        }
-
-        .course-item:hover {
-            transform: translateX(5px);
-        }
-
-        .course-item::before {
-            content: '\f19d';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 15px;
-            top: 20px;
-            color: var(--primary-color);
-            font-size: 1.2em;
-        }
-
         /* Awards Section */
         .awards {
-            animation: fadeIn 0.8s ease-out 0.7s forwards;
+            animation: fadeIn 0.8s ease-out 0.5s forwards;
             opacity: 0;
         }
 
@@ -531,9 +490,46 @@
             border: none;
         }
 
+        /* Image Viewer Styles */
+        .image-viewer {
+            width: 100%;
+            height: 270px; /* 90% de 300px */
+            margin: 10px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+
+        body.light .image-viewer {
+            background-color: #e9ecef;
+        }
+
+        .image-viewer img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .image-viewer {
+                height: 225px; /* 90% de 250px */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-viewer {
+                height: 180px; /* 90% de 200px */
+            }
+        }
+
         /* Contact Section */
         .contact {
-            animation: fadeIn 0.8s ease-out 0.8s forwards;
+            animation: fadeIn 0.8s ease-out 0.6s forwards;
             opacity: 0;
         }
 
@@ -673,7 +669,7 @@
             color: var(--text-light);
             text-align: center;
             padding: 30px 20px;
-            animation: fadeIn 0.8s ease-out 1s forwards;
+            animation: fadeIn 0.8s ease-out 0.8s forwards;
             opacity: 0;
         }
 
@@ -767,7 +763,8 @@
                 flex-direction: column;
             }
 
-            .pdf-viewer {
+            .pdf-viewer,
+            .image-viewer {
                 height: 250px;
             }
         }
@@ -809,7 +806,8 @@
                 min-width: 100%;
             }
 
-            .pdf-viewer {
+            .pdf-viewer,
+            .image-viewer {
                 height: 200px;
             }
         }
@@ -982,77 +980,74 @@
         </div>
     </section>
 
-    <section class="courses">
-        <h2>Formación Académica</h2>
-        <div class="courses-list">
-            <div class="course-item">
-                <strong>Ingeniería en Sistemas Computacionales</strong> - Universidad en curso
-            </div>
-            <div class="course-item">
-                <strong>HTML5 y CSS3, parte 1-4</strong> - Alura Latam (Oracle Next Education)
-            </div>
-            <div class="course-item">
-                <strong>JavaScript: Programación Orientada a Objetos</strong> - Alura Latam
-            </div>
-            <div class="course-item">
-                <strong>Python: Introducción a la programación</strong> - Alura Latam
-            </div>
-            <div class="course-item">
-                <strong>Formación en tecnología con Python</strong> - Alura Latam
-            </div>
-        </div>
-    </section>
-
-    <section class="awards">
-        <h2>Reconocimientos Obtenidos</h2>
-        <div class="awards-grid">
-            <div class="award-card">
-                <i class="fas fa-certificate award-icon"></i>
-                <div class="award-info">
-                    <h3>Habilidades Gerenciales - Beginner I</h3>
-                    <p><strong>Utel Universidad</strong></p>
-                    <p>Reconocimiento por completar con éxito el curso de Habilidades Gerenciales (Beginner). La insignia acredita el primero de seis subniveles en el nivel Beginner.</p>
-                    <div class="award-links">
-                        <a href="https://badges.s4learning.com/earner/public/67c8bb77f4de68a429018c6c/badge" target="_blank" class="award-link">
-                            <i class="fas fa-certificate"></i> Ver Credencial
-                        </a>
-                    </div>
+   <section class="awards">
+    <h2>Reconocimientos Obtenidos</h2>
+    <div class="awards-grid">
+        <div class="award-card">
+            <i class="fas fa-certificate award-icon"></i>
+            <div class="award-info">
+                <h3>Habilidades Gerenciales - Beginner I</h3>
+                <p><strong>Utel Universidad</strong></p>
+                <div class="image-viewer">
+                    <img src="https://raw.githubusercontent.com/Masio84/Masio84/main/Habilidades%20Gerenciales%20-%20Beginner.png" alt="Certificado Habilidades Gerenciales">
                 </div>
-            </div>
-            
-            <div class="award-card">
-                <i class="fas fa-certificate award-icon"></i>
-                <div class="award-info">
-                    <h3>Introducción a Ciencia de Datos</h3>
-                    <p><strong>Santander Open Academy</strong></p>
-                    <div class="pdf-viewer">
-                        <iframe src="https://docs.google.com/gview?url=https://github.com/Masio84/Masio84/raw/main/SantanderOpenAcademy%20-%20Introducci%C3%B3n%20a%20Ciencia%20de%20Datos.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
-                    </div>
-                    <div class="award-links">
-                        <a href="https://github.com/Masio84/Masio84/raw/main/SantanderOpenAcademy%20-%20Introducci%C3%B3n%20a%20Ciencia%20de%20Datos.pdf" target="_blank" class="award-link">
-                            <i class="fas fa-download"></i> Descargar PDF
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="award-card">
-                <i class="fas fa-certificate award-icon"></i>
-                <div class="award-info">
-                    <h3>Python</h3>
-                    <p><strong>Santander Open Academy</strong></p>
-                    <div class="pdf-viewer">
-                        <iframe src="https://docs.google.com/gview?url=https://github.com/Masio84/Masio84/raw/main/SantanderOpenAcademy%20-%20Python.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
-                    </div>
-                    <div class="award-links">
-                        <a href="https://github.com/Masio84/Masio84/raw/main/SantanderOpenAcademy%20-%20Python.pdf" target="_blank" class="award-link">
-                            <i class="fas fa-download"></i> Descargar PDF
-                        </a>
-                    </div>
+                <div class="award-links">
+                    <a href="https://badges.s4learning.com/earner/public/67c8bb77f4de68a429018c6c/badge" target="_blank" class="award-link">
+                        <i class="fas fa-certificate"></i> Ver Credencial
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <div class="award-card">
+            <i class="fas fa-certificate award-icon"></i>
+            <div class="award-info">
+                <h3>Introducción a Ciencia de Datos</h3>
+                <p><strong>Santander Open Academy</strong></p>
+                <div class="pdf-viewer">
+                    <iframe src="https://docs.google.com/gview?url=https://github.com/Masio84/Masio84/raw/main/SantanderOpenAcademy%20-%20Introducci%C3%B3n%20a%20Ciencia%20de%20Datos.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
+                </div>
+                <div class="award-links">
+                    <a href="https://github.com/Masio84/Masio84/raw/main/SantanderOpenAcademy%20-%20Introducci%C3%B3n%20a%20Ciencia%20de%20Datos.pdf" target="_blank" class="award-link">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="award-card">
+            <i class="fas fa-certificate award-icon"></i>
+            <div class="award-info">
+                <h3>Python</h3>
+                <p><strong>Santander Open Academy</strong></p>
+                <div class="pdf-viewer">
+                    <iframe src="https://docs.google.com/gview?url=https://github.com/Masio84/Masio84/raw/main/SantanderOpenAcademy%20-%20Python.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
+                </div>
+                <div class="award-links">
+                    <a href="https://github.com/Masio84/Masio84/raw/main/SantanderOpenAcademy%20-%20Python.pdf" target="_blank" class="award-link">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="award-card">
+            <i class="fas fa-certificate award-icon"></i>
+            <div class="award-info">
+                <h3>Introducción a Microsoft Word</h3>
+                <p><strong>Santander Open Academy</strong></p>
+                <div class="pdf-viewer">
+                    <iframe src="https://docs.google.com/gview?url=https://github.com/Masio84/Masio84/raw/main/Reconocimiento%20Introducci%C3%B3n%20a%20Microsoft%20Word.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
+                </div>
+                <div class="award-links">
+                    <a href="https://github.com/Masio84/Masio84/raw/main/Reconocimiento%20Introducci%C3%B3n%20a%20Microsoft%20Word.pdf" target="_blank" class="award-link">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <section class="contact">
         <h2>Contáctame</h2>
