@@ -493,7 +493,7 @@
         /* Image Viewer Styles */
         .image-viewer {
             width: 100%;
-            height: 270px; /* 90% de 300px */
+            height: 270px;
             margin: 10px 0;
             border-radius: 8px;
             overflow: hidden;
@@ -515,16 +515,167 @@
             border-radius: 8px;
         }
 
-        @media (max-width: 768px) {
-            .image-viewer {
-                height: 225px; /* 90% de 250px */
-            }
+        /* Certificates Grid Styles */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
 
-        @media (max-width: 480px) {
-            .image-viewer {
-                height: 180px; /* 90% de 200px */
-            }
+        .certificate-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        body.light .certificate-item {
+            color: var(--text-dark);
+        }
+
+        .certificate-item img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        body.light .certificate-item img {
+            border-color: rgba(0,0,0,0.1);
+        }
+
+        .certificate-item span {
+            margin-top: 8px;
+            font-size: 0.8em;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .certificate-item:hover img {
+            box-shadow: 0 5px 15px rgba(195, 233, 53, 0.3);
+        }
+
+        .full-certificate {
+            background-color: var(--primary-color);
+            color: var(--text-dark) !important;
+            padding: 15px 10px;
+            border-radius: 8px;
+            justify-content: center;
+        }
+
+        .full-certificate i {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            text-align: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-color);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lightbox-nav button:hover {
+            background: var(--primary-color);
+            color: var(--text-dark);
+        }
+
+        .lightbox-actions {
+            margin-top: 15px;
+        }
+
+        .lightbox-link {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lightbox-link:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         /* Contact Section */
@@ -767,6 +918,10 @@
             .image-viewer {
                 height: 250px;
             }
+
+            .certificates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
         }
 
         @media (max-width: 480px) {
@@ -809,6 +964,10 @@
             .pdf-viewer,
             .image-viewer {
                 height: 200px;
+            }
+
+            .certificates-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -983,6 +1142,84 @@
    <section class="awards">
     <h2>Reconocimientos Obtenidos</h2>
     <div class="awards-grid">
+        <!-- Certificados Alura -->
+        <div class="award-card">
+            <i class="fas fa-certificate award-icon"></i>
+            <div class="award-info">
+                <h3>Certificados Alura Latam</h3>
+                <p><strong>ONE - Oracle Next Education</strong></p>
+                
+                <div class="certificates-grid">
+                    <!-- Certificado 1 -->
+                    <div class="certificate-item" 
+                         onclick="openLightbox(
+                            'https://raw.githubusercontent.com/Masio84/Masio84/main/principiante_en_programacion.jpg', 
+                            'Principiante en Programación',
+                            'https://app.aluracursos.com/user/masio-tds/degree-programacion-primeros-pasos-15697/certificate'
+                         )">
+                        <img src="https://raw.githubusercontent.com/Masio84/Masio84/main/principiante_en_programacion.jpg" 
+                             alt="Principiante en Programación">
+                        <span>Principiante en Programación</span>
+                    </div>
+                    
+                    <!-- Certificado 2 -->
+                    <div class="certificate-item" 
+                         onclick="openLightbox(
+                            'https://raw.githubusercontent.com/Masio84/Masio84/main/Alura_cursos.jpg', 
+                            'Programación ONE',
+                            'https://app.aluracursos.com/user/masio-tds/degree-programacion-primeros-pasos-grupo6-one-15702/certificate'
+                         )">
+                        <img src="https://raw.githubusercontent.com/Masio84/Masio84/main/Alura_cursos.jpg" 
+                             alt="Programación ONE">
+                        <span>Programación ONE</span>
+                    </div>
+                    
+                    <!-- Certificado 3 -->
+                    <div class="certificate-item" 
+                         onclick="openLightbox(
+                            'https://raw.githubusercontent.com/Masio84/Masio84/main/Desarrollo_personal.jpg', 
+                            'Desarrollo Personal',
+                            'https://app.aluracursos.com/user/masio-tds/degree-desarrollo-personal-grupo6-one-15703/certificate'
+                         )">
+                        <img src="https://raw.githubusercontent.com/Masio84/Masio84/main/Desarrollo_personal.jpg" 
+                             alt="Desarrollo Personal">
+                        <span>Desarrollo Personal</span>
+                    </div>
+                    
+                    <!-- Certificado 4 -->
+                    <div class="certificate-item" 
+                         onclick="openLightbox(
+                            'https://raw.githubusercontent.com/Masio84/Masio84/main/Mi_carrera.jpg', 
+                            'Mi Carrera',
+                            'https://app.aluracursos.com/user/masio-tds/degree-mi-carrera-15688/certificate'
+                         )">
+                        <img src="https://raw.githubusercontent.com/Masio84/Masio84/main/Mi_carrera.jpg" 
+                             alt="Mi Carrera">
+                        <span>Mi Carrera</span>
+                    </div>
+                    
+                    <!-- Certificado 5 -->
+                    <div class="certificate-item" 
+                         onclick="openLightbox(
+                            'https://raw.githubusercontent.com/Masio84/Masio84/main/Logica_de_programacion_con_javascript.jpg', 
+                            'Lógica de Programación',
+                            'https://app.aluracursos.com/user/masio-tds/degree-logica-programacion-16428/certificate'
+                         )">
+                        <img src="https://raw.githubusercontent.com/Masio84/Masio84/main/Logica_de_programacion_con_javascript.jpg" 
+                             alt="Lógica de Programación">
+                        <span>Lógica de Programación</span>
+                    </div>
+                    
+                    <!-- Certificado Full -->
+                    <a href="https://app.aluracursos.com/user/masio-tds/fullCertificate/b80cc85b74e5695414b1d3953ed1cba9" 
+                       target="_blank" class="certificate-item full-certificate">
+                        <i class="fas fa-award"></i>
+                        <span>Certificado Completo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
         <div class="award-card">
             <i class="fas fa-certificate award-icon"></i>
             <div class="award-info">
@@ -1048,6 +1285,23 @@
         </div>
     </div>
 </section>
+
+    <!-- Lightbox HTML -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-actions">
+                <a id="lightbox-link" href="#" target="_blank" class="lightbox-link">
+                    <i class="fas fa-external-link-alt"></i> Ver Certificado Completo
+                </a>
+            </div>
+            <div class="lightbox-nav">
+                <button onclick="navigateLightbox(-1)">❮</button>
+                <button onclick="navigateLightbox(1)">❯</button>
+            </div>
+        </div>
+    </div>
 
     <section class="contact">
         <h2>Contáctame</h2>
@@ -1152,6 +1406,88 @@
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxLink = document.getElementById('lightbox-link');
+        let currentImageIndex = 0;
+        const images = [
+            {
+                url: 'https://raw.githubusercontent.com/Masio84/Masio84/main/principiante_en_programacion.jpg',
+                title: 'Principiante en Programación',
+                originalUrl: 'https://app.aluracursos.com/user/masio-tds/degree-programacion-primeros-pasos-15697/certificate'
+            },
+            {
+                url: 'https://raw.githubusercontent.com/Masio84/Masio84/main/Alura_cursos.jpg',
+                title: 'Programación ONE',
+                originalUrl: 'https://app.aluracursos.com/user/masio-tds/degree-programacion-primeros-pasos-grupo6-one-15702/certificate'
+            },
+            {
+                url: 'https://raw.githubusercontent.com/Masio84/Masio84/main/Desarrollo_personal.jpg',
+                title: 'Desarrollo Personal',
+                originalUrl: 'https://app.aluracursos.com/user/masio-tds/degree-desarrollo-personal-grupo6-one-15703/certificate'
+            },
+            {
+                url: 'https://raw.githubusercontent.com/Masio84/Masio84/main/Mi_carrera.jpg',
+                title: 'Mi Carrera',
+                originalUrl: 'https://app.aluracursos.com/user/masio-tds/degree-mi-carrera-15688/certificate'
+            },
+            {
+                url: 'https://raw.githubusercontent.com/Masio84/Masio84/main/Logica_de_programacion_con_javascript.jpg',
+                title: 'Lógica de Programación',
+                originalUrl: 'https://app.aluracursos.com/user/masio-tds/degree-logica-programacion-16428/certificate'
+            }
+        ];
+
+        function openLightbox(imageUrl, title, originalUrl) {
+            currentImageIndex = images.findIndex(img => img.url === imageUrl);
+            lightboxImg.src = imageUrl;
+            lightboxImg.alt = title;
+            lightboxLink.href = originalUrl;
+            lightbox.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function navigateLightbox(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            }
+            
+            const image = images[currentImageIndex];
+            lightboxImg.src = image.url;
+            lightboxImg.alt = image.title;
+            lightboxLink.href = image.originalUrl;
+        }
+
+        // Cerrar lightbox al hacer clic fuera de la imagen
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('show')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
+                }
+            }
         });
     </script>
 </body>
